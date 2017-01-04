@@ -7,9 +7,9 @@ import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import fr.pe.jvi.batch.annotation.BatchletSLD;
 import fr.pe.jvi.beans.MonContexte;
 import fr.pe.jvi.event.EvenementBatch;
-import fr.pe.jvi.intercepteur.IntercepteurContexte;
 /**
  * Batchlet de test
  * @author julien
@@ -17,6 +17,7 @@ import fr.pe.jvi.intercepteur.IntercepteurContexte;
  */
 @Named("HelloWorldBatchlet")
 @Dependent
+@BatchletSLD
 public class HelloWorldBatchlet implements javax.batch.api.Batchlet {
 
 	@Inject
@@ -32,7 +33,6 @@ public class HelloWorldBatchlet implements javax.batch.api.Batchlet {
 	Event<EvenementBatch> p_evenementBatch;
 
 	@Override
-	@IntercepteurContexte
 	public String process() throws Exception {
 
 		// here I could copy a file as a precursor to processing it

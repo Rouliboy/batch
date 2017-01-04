@@ -10,12 +10,13 @@ import org.jboss.weld.context.unbound.Unbound;
 
 @Interceptor
 @IntercepteurContexte
+//@Priority(value = 100)
 public class MonIntercepteurContexte {
-	
+
 	@Inject
 	@Unbound
 	private RequestContext m_contexteRequest;
-	
+
 	@AroundInvoke
 	public Object intercepter(InvocationContext ctx) throws Exception
 	{
