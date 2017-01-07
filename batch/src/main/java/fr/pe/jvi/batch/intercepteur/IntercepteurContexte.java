@@ -1,4 +1,4 @@
-package fr.pe.jvi.intercepteur;
+package fr.pe.jvi.batch.intercepteur;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Inherited;
