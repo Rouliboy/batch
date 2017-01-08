@@ -1,7 +1,5 @@
 package fr.pe.jvi.batch;
 
-import java.util.concurrent.TimeUnit;
-
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.Singleton;
@@ -18,19 +16,19 @@ import fr.pe.jvi.event.EvenementBatch;
 public class BatchJobStartScheduler
 {
 
-	@Resource
-	ManagedScheduledExecutorService executor;
+   @Resource
+   ManagedScheduledExecutorService executor;
 
-	@Inject
-	Instance<MyJob> m_fabriqueJobs;
-	
-	@Inject
-	Event<EvenementBatch> p_evenementBatch;
+   @Inject
+   Instance<MyJob> m_fabriqueJobs;
 
-	@PostConstruct
-	public void runJob()
-	{
-		p_evenementBatch.fire(new EvenementBatch("Demarrage", 0));
-		executor.scheduleWithFixedDelay(m_fabriqueJobs.get(), 10, 20, TimeUnit.SECONDS);
-	}
+   @Inject
+   Event<EvenementBatch> p_evenementBatch;
+
+   @PostConstruct
+   public void runJob()
+   {
+      // p_evenementBatch.fire(new EvenementBatch("Demarrage", 0));
+      // executor.scheduleWithFixedDelay(m_fabriqueJobs.get(), 10, 20, TimeUnit.SECONDS);
+   }
 }
