@@ -6,19 +6,14 @@
 package fr.pe.jvi.batch.lanceur;
 
 import java.util.Properties;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-import javax.enterprise.concurrent.ManagedExecutorService;
+import javax.batch.runtime.BatchRuntime;
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class GestionnaireJobBatch
 {
-   @Resource
-   ManagedExecutorService m_managedExecutorService;
 
    @PostConstruct
    public void init()
@@ -29,9 +24,9 @@ public class GestionnaireJobBatch
     * @param p_jobName
     * @return
     */
-   public long lancerJob(final String p_jobName) throws Throwable
+   public void lancerJob(final String p_jobName)
    {
-      return lancerJobAvecProprietes(p_jobName, null);
+      lancerJobAvecProprietes(p_jobName, null);
    }
 
    /**
@@ -39,17 +34,8 @@ public class GestionnaireJobBatch
     * @param p_properties
     * @return
     */
-   public long lancerJobAvecProprietes(final String p_jobName, final Properties p_properties) throws Throwable
+   public void lancerJobAvecProprietes(final String p_jobName, final Properties p_properties)
    {
-      try
-      {
-         final Future<Long> retour = m_managedExecutorService.submit(new TacheLancementBatch(p_jobName, p_properties));
-         return retour.get();
-      }
-      catch (final InterruptedException | ExecutionException e)
-      {
-         e.printStackTrace();
-         throw e;
-      }
+      BatchRuntime.getJobOperator().start(p_jobName, p_properties);
    }
 }
