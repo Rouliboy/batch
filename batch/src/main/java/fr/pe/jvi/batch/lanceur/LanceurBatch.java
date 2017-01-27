@@ -5,6 +5,8 @@
 // -----------------------------------------------------------------------------
 package fr.pe.jvi.batch.lanceur;
 
+import java.util.Properties;
+
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -13,21 +15,22 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("lancerBatch")
+@Path("lanceur")
 public class LanceurBatch
 {
-
    /** Le gestionnaire de job Batch */
    @Inject
    private GestionnaireJobBatch m_gestionnaireJobBatch;
 
    @GET
-   @Path("test/{job}")
+   @Path("demarrer/{job}/{env}")
    @Produces(MediaType.APPLICATION_JSON)
-   public Response test(@PathParam(value = "job") final String p_nomJob)
+   public Response test(@PathParam(value = "job") final String p_nomJob, @PathParam(value = "env") final String p_env)
    {
-      System.out.println("Lancement Batchlet lanceurBatch");
-      m_gestionnaireJobBatch.lancerJob(p_nomJob);
+      final Properties properties = new Properties();
+      properties.put("env", p_env);
+      m_gestionnaireJobBatch.lancerJobAvecProprietes(p_nomJob, properties);
+
       return Response.ok("OK").build();
    }
 }
