@@ -28,6 +28,9 @@ public class ListenerFinIntegrationSI extends AbstractJobListener
    @Override
    public void afterJob() throws Exception
    {
+      // TODO:
+      // Finalisation du rapport (temps de traitement, etc.
+      // Levée d'évenement pour suppression du contexte @JobScoped
       System.out.println("IntegrationSIJobListener after job");
 
       m_evenement.fire(new EvenementSuppressionContexte(jobContext.getExecutionId()));

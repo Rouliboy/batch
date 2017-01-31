@@ -11,11 +11,11 @@ import java.util.concurrent.ConcurrentMap;
 
 import javax.annotation.PostConstruct;
 import javax.batch.runtime.context.JobContext;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.spi.Contextual;
 import javax.enterprise.context.spi.CreationalContext;
-import javax.inject.Singleton;
 
-@Singleton
+@ApplicationScoped
 public class GestionnaireBeansJobScope
 {
    /** La Map d'objets liés au {@link JobContext} */
