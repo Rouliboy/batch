@@ -9,7 +9,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import fr.pe.jvi.beans.ContexteSollicitationBatchSLD;
-import fr.pe.jvi.beans.MonContexteRequestScoped;
 import fr.pe.jvi.event.EvenementBatch;
 
 /**
@@ -29,9 +28,6 @@ public class HelloWorldBatchlet implements javax.batch.api.Batchlet
    StepContext stepContext;
 
    @Inject
-   MonContexteRequestScoped contexteRequestScoped;
-
-   @Inject
    private ContexteSollicitationBatchSLD m_contexteBatch;
 
    @Inject
@@ -41,7 +37,6 @@ public class HelloWorldBatchlet implements javax.batch.api.Batchlet
    public void init()
    {
       System.out.println("HelloWorldBatchlet m_contexteSollicitation = " + m_contexteBatch);
-      System.out.println("HelloWorldBatchlet contexteRequestScoped = " + contexteRequestScoped);
    }
 
    /**

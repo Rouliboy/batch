@@ -48,7 +48,7 @@ public class JobScopeContexte implements Context
       final Long jobExecutionId = recupererJobExecutionId();
 
       final GestionnaireBeansJobScope gestionnaireBeansJobScope = recupererGestionnaireBeansJobScope();
-      return gestionnaireBeansJobScope.getBeanParId(p_contextual, jobExecutionId);
+      return gestionnaireBeansJobScope.recupererBeanParId(p_contextual, jobExecutionId);
    }
 
    /**
@@ -62,7 +62,7 @@ public class JobScopeContexte implements Context
       final Long jobExecutionId = recupererJobExecutionId();
 
       final GestionnaireBeansJobScope gestionnaireBeansJobScope = recupererGestionnaireBeansJobScope();
-      return gestionnaireBeansJobScope.getBeanParId(p_contextual, p_creationalContext, jobExecutionId);
+      return gestionnaireBeansJobScope.creerOuRecupererBeanParId(p_contextual, p_creationalContext, jobExecutionId);
    }
 
    /**
@@ -99,7 +99,7 @@ public class JobScopeContexte implements Context
       final Long jobExecutionId;
       if (null == jobContexte)
       {
-         // / TODO? : contexte.release();
+         // contexte.release();
          throw new ContextNotActiveException("Le contexte CDI annoté @" + getScope().getName() + " n'est pas actif");
       }
       else

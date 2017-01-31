@@ -33,7 +33,7 @@ public class GestionnaireBeansJobScope
     * @see javax.enterprise.context.spi.Context#get(javax.enterprise.context.spi.Contextual)
     */
    @SuppressWarnings("unchecked")
-   public <T> T getBeanParId(final Contextual<T> p_contextual, final Long p_jobExecutionId)
+   public <T> T recupererBeanParId(final Contextual<T> p_contextual, final Long p_jobExecutionId)
    {
       T retour = null;
 
@@ -51,7 +51,7 @@ public class GestionnaireBeansJobScope
    }
 
    @SuppressWarnings("unchecked")
-   public <T> T getBeanParId(final Contextual<T> p_contextual, final CreationalContext<T> p_creationalContext, final Long p_jobExecutionId)
+   public <T> T creerOuRecupererBeanParId(final Contextual<T> p_contextual, final CreationalContext<T> p_creationalContext, final Long p_jobExecutionId)
    {
       final ConcurrentMap<Contextual<?>, JobScopeInstance<?>> mapJobCourant = creerouRecupererMapCourante(p_jobExecutionId);
 

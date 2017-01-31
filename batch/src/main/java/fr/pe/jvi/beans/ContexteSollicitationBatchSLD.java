@@ -5,6 +5,8 @@
 // -----------------------------------------------------------------------------
 package fr.pe.jvi.beans;
 
+import javax.annotation.PreDestroy;
+
 import fr.pe.jvi.batch.annotation.JobScoped;
 
 @JobScoped
@@ -29,5 +31,11 @@ public class ContexteSollicitationBatchSLD
    public void setValeur(final String p_valeur)
    {
       m_valeur = p_valeur;
+   }
+
+   @PreDestroy
+   protected void destruction()
+   {
+      System.out.println("Destruction du bean ContexteSollicitationBatchSLD");
    }
 }

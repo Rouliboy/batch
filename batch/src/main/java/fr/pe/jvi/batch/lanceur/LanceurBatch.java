@@ -31,6 +31,7 @@ public class LanceurBatch
       properties.put("env", p_env);
       m_gestionnaireJobBatch.lancerJobAvecProprietes(p_nomJob, properties);
 
+      System.out.println("Sortie de la méthode Rest");
       return Response.ok("OK").build();
    }
 }
