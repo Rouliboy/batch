@@ -40,6 +40,9 @@ public class GestionnaireBeansRequestContextTest
       assertTrue(cle.equals(cle2));
       assertTrue(cle2.equals(cle));
 
+      // Autre
+      assertFalse(cle.equals(null));
+
       final CleContexteBatch cleAutre = new CleContexteBatch((new Object()).getClass(), 1L);
       final CleContexteBatch cleAutre2 = new CleContexteBatch(getClass(), 2L);
 

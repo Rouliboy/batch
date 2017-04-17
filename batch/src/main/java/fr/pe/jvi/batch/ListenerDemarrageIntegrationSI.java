@@ -15,7 +15,7 @@ import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import fr.pe.jvi.beans.ContexteSollicitationBatchSLDImpl;
+import fr.pe.jvi.beans.ContexteSollicitationBatchSLD;
 
 @Named("ListenerDemarrageIntegrationSI")
 @Dependent
@@ -26,7 +26,7 @@ public class ListenerDemarrageIntegrationSI extends AbstractJobListener
    private JobContext jobContext;
 
    @Inject
-   private ContexteSollicitationBatchSLDImpl m_contexteBatch;
+   private ContexteSollicitationBatchSLD m_contexteBatch;
 
    @Override
    public void beforeJob() throws Exception
@@ -39,7 +39,6 @@ public class ListenerDemarrageIntegrationSI extends AbstractJobListener
       final JobOperator jobOperator = BatchRuntime.getJobOperator();
       final Properties jobParameters = jobOperator.getParameters(jobContext.getExecutionId());
 
-      m_contexteBatch.setEnvironnement(jobParameters.getProperty("env"));
       m_contexteBatch.setValeur(Thread.currentThread().getName());
    }
 }

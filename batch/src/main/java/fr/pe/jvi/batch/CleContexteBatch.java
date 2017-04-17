@@ -5,12 +5,17 @@
 // -----------------------------------------------------------------------------
 package fr.pe.jvi.batch;
 
+import java.util.Objects;
+
 public class CleContexteBatch
 {
+   /** La classe demandeur */
    private final String m_nomClasseDemandeur;
 
+   /** L'identifiant du thread courant */
    private final String m_IdThread;
 
+   /** L'id du job */
    private final Long m_idJob;
 
    /**
@@ -34,9 +39,9 @@ public class CleContexteBatch
    {
       final int prime = 31;
       int result = 1;
-      result = prime * result + ((m_nomClasseDemandeur == null) ? 0 : m_nomClasseDemandeur.hashCode());
-      result = prime * result + ((m_idJob == null) ? 0 : m_idJob.hashCode());
-      result = prime * result + ((m_IdThread == null) ? 0 : m_IdThread.hashCode());
+      result = prime * result + Objects.hashCode(m_nomClasseDemandeur);
+      result = prime * result + Objects.hashCode(m_IdThread);
+      result = prime * result + Objects.hashCode(m_idJob);
       return result;
    }
 
@@ -49,45 +54,17 @@ public class CleContexteBatch
    {
       boolean retour = true;
 
-      if (p_obj instanceof CleContexteBatch)
+      if (null == p_obj)
+      {
+         retour = false;
+      }
+      else if (p_obj instanceof CleContexteBatch)
       {
          final CleContexteBatch other = (CleContexteBatch) p_obj;
 
-         if (m_nomClasseDemandeur == null)
-         {
-            if (other.m_nomClasseDemandeur != null)
-            {
-               retour = false;
-            }
-         }
-         else if (false == m_nomClasseDemandeur.equals(other.m_nomClasseDemandeur))
-         {
-            retour = false;
-         }
-
-         if (m_idJob == null)
-         {
-            if (other.m_idJob != null)
-            {
-               retour = false;
-            }
-         }
-         else if (false == m_idJob.equals(other.m_idJob))
-         {
-            retour = false;
-         }
-
-         if (m_IdThread == null)
-         {
-            if (other.m_IdThread != null)
-            {
-               retour = false;
-            }
-         }
-         else if (false == m_IdThread.equals(other.m_IdThread))
-         {
-            retour = false;
-         }
+         retour = retour && Objects.equals(m_nomClasseDemandeur, other.m_nomClasseDemandeur);
+         retour = retour && Objects.equals(m_IdThread, other.m_IdThread);
+         retour = retour && Objects.equals(m_idJob, other.m_idJob);
       }
       else
       {
