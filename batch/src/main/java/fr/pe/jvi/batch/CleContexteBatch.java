@@ -54,11 +54,7 @@ public class CleContexteBatch
    {
       boolean retour = true;
 
-      if (null == p_obj)
-      {
-         retour = false;
-      }
-      else if (p_obj instanceof CleContexteBatch)
+      if (p_obj instanceof CleContexteBatch)
       {
          final CleContexteBatch other = (CleContexteBatch) p_obj;
 
