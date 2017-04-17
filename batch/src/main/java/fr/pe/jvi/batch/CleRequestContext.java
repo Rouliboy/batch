@@ -33,6 +33,7 @@ public class CleRequestContext
    /**
     * {@inheritDoc}
     * @see java.lang.Object#hashCode()
+    * @see Objects#hashCode()
     */
    @Override
    public int hashCode()
@@ -48,6 +49,7 @@ public class CleRequestContext
    /**
     * {@inheritDoc}
     * @see java.lang.Object#equals(java.lang.Object)
+    * @see Objects#equals(Object, Object)
     */
    @Override
    public boolean equals(final Object p_obj)
@@ -85,7 +87,7 @@ public class CleRequestContext
    @Override
    public String toString()
    {
-      return "CleContexte [m_class=" + m_nomClasseDemandeur + ", m_threadId=" + m_IdThread + ", m_jobId=" + m_idJob + "]";
+      return "CleRequestContext [m_class=" + m_nomClasseDemandeur + ", m_threadId=" + m_IdThread + ", m_jobId=" + m_idJob + "]";
    }
 
 }
