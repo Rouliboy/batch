@@ -7,7 +7,7 @@ package fr.pe.jvi.batch;
 
 import java.util.Objects;
 
-public class CleContexteBatch
+public class CleRequestContext
 {
    /** La classe demandeur */
    private final String m_nomClasseDemandeur;
@@ -23,7 +23,7 @@ public class CleContexteBatch
     * @param p_classeDemandeur
     * @param p_jobId
     */
-   public CleContexteBatch(final Class<?> p_classeDemandeur, final Long p_jobId)
+   public CleRequestContext(final Class<?> p_classeDemandeur, final Long p_jobId)
    {
       m_nomClasseDemandeur = p_classeDemandeur.getCanonicalName();
       m_IdThread = Thread.currentThread().getName() + "_" + Thread.currentThread().getId();
@@ -54,9 +54,9 @@ public class CleContexteBatch
    {
       boolean retour = true;
 
-      if (p_obj instanceof CleContexteBatch)
+      if (p_obj instanceof CleRequestContext)
       {
-         final CleContexteBatch other = (CleContexteBatch) p_obj;
+         final CleRequestContext other = (CleRequestContext) p_obj;
 
          retour = retour && Objects.equals(m_nomClasseDemandeur, other.m_nomClasseDemandeur);
          retour = retour && Objects.equals(m_IdThread, other.m_IdThread);

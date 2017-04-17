@@ -35,7 +35,7 @@ public class GestionnaireContexteBatch
       if (false == m_contexteRequest.isActive())
       {
          m_contexteRequest.activate();
-         final CleContexteBatch cle = new CleContexteBatch(p_classeDemandeur, m_jobContext.getExecutionId());
+         final CleRequestContext cle = new CleRequestContext(p_classeDemandeur, m_jobContext.getExecutionId());
          m_gestionnaireBeansRequestContext.ajouterBean(cle, m_contexteRequest);
       }
    }
@@ -45,7 +45,7 @@ public class GestionnaireContexteBatch
     */
    public void arreterContexte(final Class<?> p_classeDemandeur)
    {
-      final CleContexteBatch cle = new CleContexteBatch(p_classeDemandeur, m_jobContext.getExecutionId());
+      final CleRequestContext cle = new CleRequestContext(p_classeDemandeur, m_jobContext.getExecutionId());
       m_gestionnaireBeansRequestContext.supprimerBean(cle);
    }
 }

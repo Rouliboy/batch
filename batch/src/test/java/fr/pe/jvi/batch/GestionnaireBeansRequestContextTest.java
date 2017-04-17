@@ -20,9 +20,9 @@ public class GestionnaireBeansRequestContextTest
    @Test
    public void test()
    {
-      final CleContexteBatch cle = new CleContexteBatch(getClass(), 1L);
-      final CleContexteBatch cle2 = new CleContexteBatch(getClass(), 1L);
-      final CleContexteBatch cle3 = new CleContexteBatch(getClass(), 1L);
+      final CleRequestContext cle = new CleRequestContext(getClass(), 1L);
+      final CleRequestContext cle2 = new CleRequestContext(getClass(), 1L);
+      final CleRequestContext cle3 = new CleRequestContext(getClass(), 1L);
 
       // reflexive
       assertTrue(cle.equals(cle));
@@ -43,8 +43,8 @@ public class GestionnaireBeansRequestContextTest
       // Autre
       assertFalse(cle.equals(null));
 
-      final CleContexteBatch cleAutre = new CleContexteBatch((new Object()).getClass(), 1L);
-      final CleContexteBatch cleAutre2 = new CleContexteBatch(getClass(), 2L);
+      final CleRequestContext cleAutre = new CleRequestContext((new Object()).getClass(), 1L);
+      final CleRequestContext cleAutre2 = new CleRequestContext(getClass(), 2L);
 
       assertFalse(cleAutre.equals(cle));
       assertFalse(cle.equals(cleAutre));

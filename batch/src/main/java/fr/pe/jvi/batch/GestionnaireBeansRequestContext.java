@@ -19,13 +19,13 @@ public class GestionnaireBeansRequestContext
 {
 
    /** */
-   private final ConcurrentMap<CleContexteBatch, RequestContext> mapBeansRequestContext = new ConcurrentHashMap<CleContexteBatch, RequestContext>();
+   private final ConcurrentMap<CleRequestContext, RequestContext> mapBeansRequestContext = new ConcurrentHashMap<CleRequestContext, RequestContext>();
 
    /**
     * @param p_cleContexteBatch
     * @param p_beanRequestContext
     */
-   public void ajouterBean(final CleContexteBatch p_cleContexteBatch, final RequestContext p_beanRequestContext)
+   public void ajouterBean(final CleRequestContext p_cleContexteBatch, final RequestContext p_beanRequestContext)
    {
       final RequestContext ancien = mapBeansRequestContext.put(p_cleContexteBatch, p_beanRequestContext);
       if (null != ancien)
@@ -38,7 +38,7 @@ public class GestionnaireBeansRequestContext
    /**
     * @param p_cleContexteBatch
     */
-   public void supprimerBean(final CleContexteBatch p_cleContexteBatch)
+   public void supprimerBean(final CleRequestContext p_cleContexteBatch)
    {
       final RequestContext beanSupprime = mapBeansRequestContext.remove(p_cleContexteBatch);
       if (null != beanSupprime)
@@ -55,10 +55,10 @@ public class GestionnaireBeansRequestContext
    {
       if (null != p_idJob)
       {
-         final Iterator<Entry<CleContexteBatch, RequestContext>> it = mapBeansRequestContext.entrySet().iterator();
+         final Iterator<Entry<CleRequestContext, RequestContext>> it = mapBeansRequestContext.entrySet().iterator();
          while (it.hasNext())
          {
-            final Entry<CleContexteBatch, RequestContext> entree = it.next();
+            final Entry<CleRequestContext, RequestContext> entree = it.next();
             if (p_idJob.equals(entree.getKey().getIdJob()))
             {
                it.remove();
